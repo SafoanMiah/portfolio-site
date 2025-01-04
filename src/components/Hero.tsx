@@ -1,22 +1,21 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useAccentColor } from "@/context/AccentColorContext";
+import TerminalPortfolio from './Terminal';
+import { useState } from 'react';
 
 export const Hero = () => {
-  const { accentColor, changeAccentColor } = useAccentColor();
+  const [isTerminalOpen, setIsTerminalOpen] = useState(false);
 
   return (
     <section className="min-h-[70vh] flex items-center relative px-4">
       <div
         className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/20 via-background to-background -z-10"
-        style={{ "--tw-gradient-stops": `${accentColor}, var(--background)` }}
       />
 
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-left space-y-6 max-w-2xl animate-fade-in relative">
           <div
             className="absolute -left-8 top-0 h-full w-1 bg-gradient-to-b from-primary/50 via-primary/20 to-transparent"
-            style={{ background: `linear-gradient(to bottom, ${accentColor} 50%, transparent)` }}
           />
 
           <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
@@ -28,7 +27,6 @@ export const Hero = () => {
             Data Science Student
             <div
               className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary/50 animate-pulse"
-              style={{ backgroundColor: accentColor }}
             />
           </h2>
 
@@ -56,6 +54,17 @@ export const Hero = () => {
               Contact
             </Button>
           </div>
+
+          <Button
+            variant="default"
+            size="lg"
+            className="w-full lg:w-2/3 mt-4 bg-primary text-white hover:bg-white hover:text-primary"
+            onClick={() => setIsTerminalOpen(true)}
+          >
+            Terminal
+          </Button>
+
+          {isTerminalOpen && <TerminalPortfolio />}
         </div>
 
         <div className="hidden lg:block w-1/3">
@@ -66,13 +75,6 @@ export const Hero = () => {
           </div>
         </div>
       </div>
-
-      <button
-        onClick={changeAccentColor}
-        className="absolute top-4 right-4 bg-white text-black px-4 py-2 rounded-md shadow-md"
-      >
-        Change Accent Color
-      </button>
     </section>
   );
 };
