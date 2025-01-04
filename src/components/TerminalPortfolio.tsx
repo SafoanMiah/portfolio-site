@@ -11,8 +11,12 @@ const projects = [
     { id: 4, name: 'Project 4', description: 'Description of Project 4', github: 'https://github.com/yourusername/project4' },
 ]
 
-const TerminalPortfolio: React.FC = () => {
-    const [isOpen, setIsOpen] = useState(false)
+interface TerminalPortfolioProps {
+    isOpen: boolean;
+    onClose: () => void;
+}
+
+const TerminalPortfolio: React.FC<TerminalPortfolioProps> = ({ isOpen, onClose }) => {
     const [activeTab, setActiveTab] = useState('home')
     const [input, setInput] = useState('')
     const [output, setOutput] = useState<string[]>([])
@@ -20,6 +24,7 @@ const TerminalPortfolio: React.FC = () => {
     const [historyIndex, setHistoryIndex] = useState(-1)
     const [currentDirectory, setCurrentDirectory] = useState('~')
     const inputRef = useRef<HTMLInputElement>(null)
+    const [isMaximized, setIsMaximized] = useState(false)
 
     useEffect(() => {
         if (isOpen && inputRef.current) {
@@ -79,7 +84,20 @@ const TerminalPortfolio: React.FC = () => {
 
         switch (command) {
             case 'help':
-                setOutput([...output, `${currentDirectory} $ ${cmd}`, 'Available commands:', 'help - Show this help message', 'clear - Clear the terminal', 'home - Go to home page', 'about - View about information', 'projects - List projects', 'contact - View contact information', 'ls - List directory contents', 'cd - Change directory', 'cat - View file contents', 'date - Display current date and time', 'echo - Print text to the terminal', 'whoami - Display current user', '1-4 - View project details (in projects section)'])
+                setOutput([...output, `${currentDirectory} $ ${cmd}`, 'Available commands:',
+                    'help - Show this help message',
+                    'clear - Clear the terminal',
+                    'home - Go to home page',
+                    'about - View about information',
+                    'projects - List projects',
+                    'contact - View contact information',
+                    'ls - List directory contents',
+                    'cd - Change directory',
+                    'cat - View file contents',
+                    'date - Display current date and time',
+                    'echo - Print text to the terminal',
+                    'whoami - Display current user',
+                    'exit - Close the terminal'])
                 break
             case 'clear':
                 setOutput([])
@@ -131,6 +149,9 @@ const TerminalPortfolio: React.FC = () => {
                     setOutput([...output, `${currentDirectory} $ ${cmd}`, 'Invalid command. Type "help" for available commands.'])
                 }
                 break
+            case 'exit':
+                onClose();
+                break;
             default:
                 setOutput([...output, `${currentDirectory} $ ${cmd}`, `Command not found: ${command}. Type "help" for available commands.`])
         }
@@ -142,11 +163,11 @@ const TerminalPortfolio: React.FC = () => {
                 return (
                     <pre className="text-accent-blue">
                         {`
- ____    _    _____ ___    _    _   _   __  __ ___    _    _   _ 
-/ ___|  / \\  |  ___/ _ \\  / \\  | \\ | | |  \\/  |_ _|  / \\  | | | |
-\\___ \\ / _ \\ | |_ | | | |/ _ \\ |  \\| | | |\\/| || |  / _ \\ | |_| |
- ___) / ___ \\|  _|| |_| / ___ \\| |\\  | | |  | || | / ___ \\|  _  |
-|____/_/   \\_\\_|   \\___/_/   \\_\\_| \\_| |_|  |_|___/_/   \\_\\_| |_|
+ ____    _    _____ ___    _    _   _   __            __ ___    _    _   _ 
+/ ___|  / \\  |  ___/ _ \\  / \\  | \\ | |           |  \\/  |_ _|  / \\  | | | |
+\\___ \\ / _ \\ | |_ | | | |/ _ \\ |  \\| |           | |\\/| || |  / _ \\ | |_| |
+ ___) / ___ \\|  _|| |_| / ___ \\| |\\  | |           |  | || | / ___ \\|  _  |
+|____/_/   \\_\\_|   \\___/_/   \\_\\_| \\_|           |_|  |_|___/_/   \\_\\_| |_|
                                                                  
 Welcome to my terminal portfolio!
 Type "help" for available commands.
@@ -196,50 +217,43 @@ Type "help" for available commands.
         }
     }
 
+    const toggleMaximize = () => {
+        setIsMaximized(!isMaximized)
+    }
+
     return (
-        <div className="min-h-screen bg-dark-blue flex items-center justify-center">
-            <div className="fixed top-4 left-4 space-x-4">
-                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">
-                    <FaGithub className="text-accent-green text-2xl inline-block" />
-                </a>
-                <a href="https://www.linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
-                    <FaLinkedin className="text-accent-blue text-2xl inline-block" />
-                </a>
-                <a href="mailto:your.email@example.com">
-                    <FaEnvelope className="text-accent-yellow text-2xl inline-block" />
-                </a>
-            </div>
-            <button
-                onClick={() => setIsOpen(true)}
-                className="bg-accent-green text-dark-blue px-4 py-2 rounded-md font-bold hover:bg-accent-green-dark transition-colors"
-            >
-                Open Terminal
-            </button>
-            <AnimatePresence>
-                {isOpen && (
+        <AnimatePresence>
+            {isOpen && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-70 z-40">
                     <motion.div
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0.8, opacity: 0 }}
                         transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                        className="fixed inset-4 bg-terminal-bg rounded-lg shadow-lg overflow-hidden flex flex-col"
+                        className={`${isMaximized ? 'fixed inset-0' : 'w-1/2 h-3/4'
+                            } bg-terminal-bg shadow-lg overflow-hidden flex flex-col terminal-portfolio z-50 rounded-lg`}
                     >
                         <div className="bg-dark-blue p-2 flex items-center">
                             <div className="flex space-x-2">
                                 <button
-                                    onClick={() => setIsOpen(false)}
+                                    onClick={onClose}
                                     className="w-3 h-3 rounded-full bg-red-500 hover:bg-red-600 transition-colors"
                                 />
-                                <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                                <div className="w-3 h-3 rounded-full bg-green-500" />
+                                <button
+                                    onClick={() => setIsMaximized(false)}
+                                    className="w-3 h-3 rounded-full bg-yellow-500 hover:bg-yellow-600 transition-colors"
+                                />
+                                <button
+                                    onClick={toggleMaximize}
+                                    className="w-3 h-3 rounded-full bg-green-500 hover:bg-green-600 transition-colors"
+                                />
                             </div>
                             <div className="flex-1 flex justify-center space-x-4">
                                 {['home', 'about', 'projects', 'contact'].map((tab) => (
                                     <button
                                         key={tab}
                                         onClick={() => handleTabClick(tab)}
-                                        className={`text-sm ${activeTab === tab ? 'text-accent-green' : 'text-gray-400'
-                                            } hover:text-accent-green transition-colors`}
+                                        className={`text-sm ${activeTab === tab ? 'text-accent-green' : 'text-gray-400'} hover:text-accent-green transition-colors`}
                                     >
                                         {tab.charAt(0).toUpperCase() + tab.slice(1)}
                                     </button>
@@ -269,9 +283,9 @@ Type "help" for available commands.
                             </div>
                         </form>
                     </motion.div>
-                )}
-            </AnimatePresence>
-        </div>
+                </div>
+            )}
+        </AnimatePresence>
     )
 }
 

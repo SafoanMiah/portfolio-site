@@ -1,6 +1,6 @@
 import { Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import TerminalPortfolio from './Terminal';
+import TerminalPortfolio from './TerminalPortfolio';
 import { useState } from 'react';
 
 export const Hero = () => {
@@ -63,8 +63,6 @@ export const Hero = () => {
           >
             Terminal
           </Button>
-
-          {isTerminalOpen && <TerminalPortfolio />}
         </div>
 
         <div className="hidden lg:block w-1/3">
@@ -75,6 +73,7 @@ export const Hero = () => {
           </div>
         </div>
       </div>
+      {isTerminalOpen && <TerminalPortfolio isOpen={isTerminalOpen} onClose={() => setIsTerminalOpen(false)} />}
     </section>
   );
 };

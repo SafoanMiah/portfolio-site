@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -61,4 +63,96 @@ button:hover {
   border-color: inherit !important;
   transform: none !important;
   box-shadow: none !important;
+}
+
+.terminal-portfolio {
+  --dark-blue: #0a0e14;
+  --terminal-bg: #1c2028;
+  --text-color: #a6b3cc;
+  --accent-green: #98c379;
+  --accent-blue: #61afef;
+  --accent-yellow: #e5c07b;
+  background-color: #1c2028;
+}
+
+.terminal-portfolio {
+  font-family: 'Fira Code', monospace;
+}
+
+.terminal-portfolio .bg-dark-blue {
+  background-color: var(--dark-blue);
+}
+
+.terminal-portfolio .bg-terminal-bg {
+  background-color: var(--terminal-bg);
+}
+
+.terminal-portfolio .text-accent-green {
+  color: var(--accent-green);
+}
+
+.terminal-portfolio .text-accent-blue {
+  color: var(--accent-blue);
+}
+
+.terminal-portfolio .text-accent-yellow {
+  color: var(--accent-yellow);
+}
+
+.terminal-portfolio .bg-accent-green {
+  background-color: var(--accent-green);
+}
+
+.terminal-portfolio .bg-accent-green-dark {
+  background-color: #7cb058;
+}
+
+.terminal-portfolio .animate-blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.terminal-portfolio ::-webkit-scrollbar {
+  width: 10px;
+}
+
+.terminal-portfolio ::-webkit-scrollbar-track {
+  background: var(--dark-blue);
+}
+
+.terminal-portfolio ::-webkit-scrollbar-thumb {
+  background: var(--text-color);
+  border-radius: 5px;
+}
+
+.terminal-portfolio ::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-green);
+}
+
+.terminal-portfolio ::selection {
+  background-color: var(--accent-blue);
+  color: var(--dark-blue);
+}
+
+.terminal-portfolio .bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.terminal-portfolio .blinking-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
 }
