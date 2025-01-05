@@ -26,7 +26,7 @@ export const Skills = () => {
           </div>
 
           {/* Data Science Tools Section */}
-          <div className="animate-fade-in" style={{ animationDelay: "400ms" }}>
+          <div className="animate-fade-in hidden md:block" style={{ animationDelay: "400ms" }}>
             <h3 className="text-xl font-semibold mb-6 text-primary">Data Science Tools</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {dataSkills.map((skill, index) => (
