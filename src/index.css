@@ -26,6 +26,14 @@
     --input: 240 3.7% 15.9%;
     --ring: 142.4 71.8% 29.2%;
     --radius: 0.75rem;
+    --primary-color: #33d589;
+    --secondary-color: var(--primary-color);
+
+    --accent-color: #e74c3c;
+    --background-color: #f5f5f5;
+    --text-color: #333333;
+    --card-bg-color: rgba(255, 255, 255, 0.8);
+    --border-color: rgba(255, 255, 255, 0.1);
   }
 }
 
@@ -88,7 +96,7 @@ button:hover {
 }
 
 .terminal-portfolio .text-accent-green {
-  color: var(--accent-green);
+  color: var(--primary-color);
 }
 
 .terminal-portfolio .text-accent-blue {
@@ -155,4 +163,65 @@ button:hover {
 .terminal-portfolio .blinking-cursor::after {
   content: '|';
   animation: blink 1s step-end infinite;
+}
+
+/* Example usage in components */
+.text-primary {
+  color: var(--primary-color);
+}
+
+.bg-card {
+  background-color: var(--card-bg-color);
+}
+
+.border-primary {
+  border-color: var(--primary-color);
+}
+
+.border-white\/10 {
+  border-color: var(--border-color);
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.text-gray-400 {
+  color: #cccccc;
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .terminal-portfolio {
+    padding: 10px;
+  }
+}
+
+@media (min-width: 769px) {
+  body {
+    font-size: 16px;
+  }
+
+  .terminal-portfolio {
+    padding: 20px;
+  }
+}
+
+/* Add smooth transitions for hover effects */
+button {
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+/* Enhance text readability */
+.text-primary {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.text-secondary {
+  color: var(--secondary-color);
+  font-weight: 400;
 }

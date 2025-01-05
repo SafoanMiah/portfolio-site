@@ -7,27 +7,9 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Badge } from "@/components/ui/badge";
+import projectData from "../lib/data.json";
 
-const projects = [
-  {
-    title: "Data Analysis Project",
-    description: "Analysis of large datasets using Python and Pandas",
-    tags: ["Python", "Pandas", "Data Analysis"],
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    title: "Machine Learning Model",
-    description: "Implemented deep learning models using PyTorch",
-    tags: ["PyTorch", "Machine Learning", "Python"],
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    title: "Mobile App Development",
-    description: "Developed Android applications using Kotlin",
-    tags: ["Kotlin", "Android", "Mobile"],
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80",
-  },
-];
+const projects = projectData.projects;
 
 export const Projects = () => {
   return (
@@ -46,7 +28,9 @@ export const Projects = () => {
                     className="w-full h-48 object-cover transform hover:scale-105 transition-transform duration-500 animate-rotate"
                   />
                   <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2 text-white">{project.title}</h3>
+                    <a href={project.github} target="_blank" rel="noopener noreferrer">
+                      <h3 className="text-xl font-semibold mb-2 text-white">{project.title}</h3>
+                    </a>
                     <p className="text-gray-400 mb-4">{project.description}</p>
                     <div className="flex flex-wrap gap-2">
                       {project.tags.map((tag) => (

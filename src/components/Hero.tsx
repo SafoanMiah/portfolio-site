@@ -1,7 +1,14 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import TerminalPortfolio from './TerminalPortfolio';
 import { useState } from 'react';
+import data from "../lib/data.json";
+
+const aboutMe = data.aboutMe;
+const contacts = data.contacts;
+const name = data.name;
+const buttons = data.buttons;
+const profession = data.profession;
 
 export const Hero = () => {
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
@@ -19,50 +26,42 @@ export const Hero = () => {
           />
 
           <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
-            Safoan Miah
+            {name}
             <span className="text-primary animate-pulse">_</span>
           </h1>
 
           <h2 className="text-xl text-primary relative inline-block">
-            Data Science Student
+            {profession}
             <div
               className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary/50 animate-pulse"
             />
           </h2>
 
-          <p className="text-lg text-gray-400">
-            Passionate about leveraging data science to solve complex problems and create meaningful insights.
-            Currently focused on developing innovative solutions using Python and PyTorch,
-            combining technical expertise with creative problem-solving to extract meaningful
-            insights from complex datasets.
+          <p className="text-[rgb(155,164,184)] text-sm">
+            {aboutMe}
           </p>
 
-          <div className="flex gap-4 mt-8">
-            <Button variant="outline" size="lg" className="gap-2 relative group overflow-hidden">
-              <div className="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-              <Github className="w-5 h-5" />
-              GitHub
-            </Button>
-            <Button variant="outline" size="lg" className="gap-2 relative group overflow-hidden">
-              <div className="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-              <Linkedin className="w-5 h-5" />
-              LinkedIn
-            </Button>
-            <Button variant="outline" size="lg" className="gap-2 relative group overflow-hidden">
-              <div className="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-              <Mail className="w-5 h-5" />
-              Contact
+          <div className="flex flex-col items-start gap-4 mt-8">
+            <div className="flex gap-4">
+              {buttons.filter(button => button.icon !== 'mail').map((button, index) => (
+                <Button key={index} variant="outline" size="lg" className="gap-2 relative group overflow-hidden">
+                  <div className="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                  {button.icon === 'github' && <Github className="w-5 h-5" />}
+                  {button.icon === 'linkedin' && <Linkedin className="w-5 h-5" />}
+                  {button.icon === 'download' && <Download className="w-5 h-5" />}
+                  <a href={button.link} target="_blank" rel="noopener noreferrer">{button.label}</a>
+                </Button>
+              ))}
+            </div>
+            <Button
+              variant="default"
+              size="lg"
+              className="w-4/6 bg-primary text-white hover:bg-white hover:text-primary"
+              onClick={() => setIsTerminalOpen(true)}
+            >
+              Terminal
             </Button>
           </div>
-
-          <Button
-            variant="default"
-            size="lg"
-            className="w-full lg:w-2/3 mt-4 bg-primary text-white hover:bg-white hover:text-primary"
-            onClick={() => setIsTerminalOpen(true)}
-          >
-            Terminal
-          </Button>
         </div>
 
         <div className="hidden lg:block w-1/3">

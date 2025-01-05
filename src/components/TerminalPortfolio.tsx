@@ -3,20 +3,46 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
+import data from "../lib/data.json";
 
-const projects = [
-    { id: 1, name: 'Project 1', description: 'Description of Project 1', github: 'https://github.com/yourusername/project1' },
-    { id: 2, name: 'Project 2', description: 'Description of Project 2', github: 'https://github.com/yourusername/project2' },
-    { id: 3, name: 'Project 3', description: 'Description of Project 3', github: 'https://github.com/yourusername/project3' },
-    { id: 4, name: 'Project 4', description: 'Description of Project 4', github: 'https://github.com/yourusername/project4' },
-]
+// Prepare projects data
+const projects = data.projects.map((project, index) => ({
+    id: index + 1,
+    name: project.name,
+    description: project.description,
+    github: project.github
+}));
 
+// Prepare experiences data
+const experiences = data.experience.map((exp, index) => ({
+    id: index + 1,
+    title: exp.role + " at " + exp.company,
+    description: exp.description
+}));
+
+// Prepare education data
+const education = data.education.map((edu, index) => ({
+    id: index + 1,
+    degree: edu.degree,
+    institution: edu.university,
+    year: "2023" // Assuming the year is the same for all
+}));
+
+// Extract other data
+const aboutMe = data.aboutMe;
+const contacts = data.contacts;
+const name = data.name;
+const skills = data.skills;
+
+// Define props for TerminalPortfolio component
 interface TerminalPortfolioProps {
     isOpen: boolean;
     onClose: () => void;
 }
 
+// TerminalPortfolio component definition
 const TerminalPortfolio: React.FC<TerminalPortfolioProps> = ({ isOpen, onClose }) => {
+    // State management for terminal functionality
     const [activeTab, setActiveTab] = useState('home')
     const [input, setInput] = useState('')
     const [output, setOutput] = useState<string[]>([])
@@ -26,11 +52,12 @@ const TerminalPortfolio: React.FC<TerminalPortfolioProps> = ({ isOpen, onClose }
     const inputRef = useRef<HTMLInputElement>(null)
     const [isMaximized, setIsMaximized] = useState(false)
 
+    // Focus input when terminal is open
     useEffect(() => {
         if (isOpen && inputRef.current) {
             inputRef.current.focus()
         }
-    }, [isOpen, activeTab])
+    }, [isOpen])
 
     const handleTabClick = (tab: string) => {
         setActiveTab(tab)
@@ -78,9 +105,10 @@ const TerminalPortfolio: React.FC<TerminalPortfolioProps> = ({ isOpen, onClose }
     }
 
     const processCommand = (cmd: string) => {
-        const lowerCmd = cmd.toLowerCase().trim()
-        const [command, ...args] = lowerCmd.split(' ')
-        setOutput([...output, `${currentDirectory} $ ${cmd}`])
+        const lowerCmd = cmd.toLowerCase().trim();
+        const [command, ...args] = lowerCmd.split(' ');
+        const index = parseInt(args[0], 10) - 1;
+        setOutput([...output, `${currentDirectory} $ ${cmd}`]);
 
         switch (command) {
             case 'help':
@@ -90,6 +118,7 @@ const TerminalPortfolio: React.FC<TerminalPortfolioProps> = ({ isOpen, onClose }
                     'home - Go to home page',
                     'about - View about information',
                     'projects - List projects',
+                    'experience - List experience',
                     'contact - View contact information',
                     'ls - List directory contents',
                     'cd - Change directory',
@@ -97,65 +126,64 @@ const TerminalPortfolio: React.FC<TerminalPortfolioProps> = ({ isOpen, onClose }
                     'date - Display current date and time',
                     'echo - Print text to the terminal',
                     'whoami - Display current user',
-                    'exit - Close the terminal'])
-                break
+                    'exit - Close the terminal']);
+                break;
             case 'clear':
-                setOutput([])
-                break
+                setOutput([]);
+                break;
             case 'home':
             case 'about':
             case 'projects':
             case 'contact':
-                setActiveTab(command)
-                setOutput([])
-                break
+            case 'experience':
+            case 'education':
+                setActiveTab(command);
+                setOutput([]);
+                break;
             case 'ls':
-                setOutput([...output, `${currentDirectory} $ ${cmd}`, 'home  about  projects  contact'])
-                break
+                setOutput([...output, `${currentDirectory} $ ${cmd}`, 'home  about  projects  contact']);
+                break;
             case 'cd':
                 if (args[0] === '~' || args[0] === undefined) {
-                    setCurrentDirectory('~')
-                } else if (['home', 'about', 'projects', 'contact'].includes(args[0])) {
-                    setCurrentDirectory(`~/${args[0]}`)
-                    setActiveTab(args[0])
+                    setCurrentDirectory('~');
+                } else if (['home', 'about', 'projects', 'contact', 'experience', 'education'].includes(args[0])) {
+                    setCurrentDirectory(`~/${args[0]}`);
+                    setActiveTab(args[0]);
                 } else {
-                    setOutput([...output, `${currentDirectory} $ ${cmd}`, `cd: ${args[0]}: No such file or directory`])
+                    setOutput([...output, `${currentDirectory} $ ${cmd}`, `cd: ${args[0]}: No such file or directory`]);
                 }
-                break
+                break;
             case 'cat':
                 if (args[0] === 'README.md') {
-                    setOutput([...output, `${currentDirectory} $ ${cmd}`, 'Welcome to my terminal portfolio!', 'Use the "help" command to see available commands.'])
+                    setOutput([...output, `${currentDirectory} $ ${cmd}`, 'Welcome to my terminal portfolio!', 'Use the "help" command to see available commands.']);
                 } else {
-                    setOutput([...output, `${currentDirectory} $ ${cmd}`, `cat: ${args[0]}: No such file or directory`])
+                    setOutput([...output, `${currentDirectory} $ ${cmd}`, `cat: ${args[0]}: No such file or directory`]);
                 }
-                break
+                break;
             case 'date':
-                setOutput([...output, `${currentDirectory} $ ${cmd}`, new Date().toString()])
-                break
+                setOutput([...output, `${currentDirectory} $ ${cmd}`, new Date().toString()]);
+                break;
             case 'echo':
-                setOutput([...output, `${currentDirectory} $ ${cmd}`, args.join(' ')])
-                break
+                setOutput([...output, `${currentDirectory} $ ${cmd}`, args.join(' ')]);
+                break;
             case 'whoami':
-                setOutput([...output, `${currentDirectory} $ ${cmd}`, 'Safoan Miah - Student Developer'])
-                break
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-                if (activeTab === 'projects') {
-                    const project = projects[parseInt(command) - 1]
-                    setOutput([...output, `${currentDirectory} $ ${cmd}`, `${project.name}: ${project.description}`, `GitHub: ${project.github}`])
-                } else {
-                    setOutput([...output, `${currentDirectory} $ ${cmd}`, 'Invalid command. Type "help" for available commands.'])
-                }
-                break
-            case 'exit':
-                onClose();
+                setOutput([...output, `${currentDirectory} $ ${cmd}`, 'Safoan Miah - Student Developer']);
                 break;
             default:
-                setOutput([...output, `${currentDirectory} $ ${cmd}`, `Command not found: ${command}. Type "help" for available commands.`])
+                if (activeTab === 'projects' && !isNaN(index) && projects[index]) {
+                    const project = projects[index];
+                    setOutput([...output, `${currentDirectory} $ ${cmd}`, `${project.name}: ${project.description}`, `GitHub: ${project.github}`]);
+                } else if (activeTab === 'experience' && !isNaN(index) && experiences[index]) {
+                    const experience = experiences[index];
+                    setOutput([...output, `${currentDirectory} $ ${cmd}`, `${experience.title}: ${experience.description}`]);
+                } else if (activeTab === 'education' && !isNaN(index) && education[index]) {
+                    const edu = education[index];
+                    setOutput([...output, `${currentDirectory} $ ${cmd}`, `${edu.degree} at ${edu.institution}, ${edu.year}`]);
+                } else {
+                    setOutput([...output, `${currentDirectory} $ ${cmd}`, `Command not found: ${command}. Type "help" for available commands.`]);
+                }
         }
-    }
+    };
 
     const renderContent = () => {
         switch (activeTab) {
@@ -163,11 +191,11 @@ const TerminalPortfolio: React.FC<TerminalPortfolioProps> = ({ isOpen, onClose }
                 return (
                     <pre className="text-accent-blue">
                         {`
- ____    _    _____ ___    _    _   _   __            __ ___    _    _   _ 
-/ ___|  / \\  |  ___/ _ \\  / \\  | \\ | |           |  \\/  |_ _|  / \\  | | | |
-\\___ \\ / _ \\ | |_ | | | |/ _ \\ |  \\| |           | |\\/| || |  / _ \\ | |_| |
- ___) / ___ \\|  _|| |_| / ___ \\| |\\  | |           |  | || | / ___ \\|  _  |
-|____/_/   \\_\\_|   \\___/_/   \\_\\_| \\_|           |_|  |_|___/_/   \\_\\_| |_|
+ ____    _    _____ ___    _    _   _          __  __ ___    _    _   _ 
+/ ___|  / \\  |  ___/ _ \\  / \\  | \\ | |        |  \\/  |_ _|  / \\  | | | |
+\\___ \\ / _ \\ | |_ | | | |/ _ \\ |  \\| |        | |\\/| || |  / _ \\ | |_| |
+ ___) / ___ \\|  _|| |_| / ___ \\| |\\  |        | |  | || | / ___ \\|  _  |
+|____/_/   \\_\\_|   \\___/_/   \\_\\_| \\_|        |_|  |_|___/_/   \\_\\_| |_|
                                                                  
 Welcome to my terminal portfolio!
 Type "help" for available commands.
@@ -178,14 +206,12 @@ Type "help" for available commands.
                 return (
                     <div>
                         <h2 className="text-xl font-bold mb-2">About Me</h2>
-                        <p>I'm a student developer passionate about creating innovative solutions.</p>
+                        <p>{aboutMe}</p>
                         <h3 className="text-lg font-bold mt-4 mb-2">Skills</h3>
                         <ul className="list-disc list-inside">
-                            <li>JavaScript / TypeScript</li>
-                            <li>React / Next.js</li>
-                            <li>Node.js</li>
-                            <li>Python</li>
-                            <li>SQL / NoSQL Databases</li>
+                            {skills.map((skill, index) => (
+                                <li key={index}>{skill}</li>
+                            ))}
                         </ul>
                     </div>
                 )
@@ -196,20 +222,48 @@ Type "help" for available commands.
                         <ul className="list-decimal list-inside">
                             {projects.map((project) => (
                                 <li key={project.id}>
-                                    <span className="font-bold">{project.name}</span>: {project.description}
+                                    <span className="font-bold">{project.name}</span>
                                 </li>
                             ))}
                         </ul>
-                        <p className="mt-2">Type a project number (1-4) for more details.</p>
+                        <p className="mt-2">Type "project 1" or just "1" for more details.</p>
+                    </div>
+                )
+            case 'experience':
+                return (
+                    <div>
+                        <h2 className="text-xl font-bold mb-2">Experience</h2>
+                        <ul className="list-decimal list-inside">
+                            {experiences.map((experience) => (
+                                <li key={experience.id}>
+                                    <span className="font-bold">{experience.title}</span>
+                                </li>
+                            ))}
+                        </ul>
+                        <p className="mt-2">Type "experience 1" or just "1" for more details.</p>
                     </div>
                 )
             case 'contact':
                 return (
                     <div>
                         <h2 className="text-xl font-bold mb-2">Contact Information</h2>
-                        <p>Email: your.email@example.com</p>
-                        <p>GitHub: https://github.com/yourusername</p>
-                        <p>LinkedIn: https://www.linkedin.com/in/yourusername</p>
+                        <p>Email: {contacts.email}</p>
+                        <p>GitHub: {contacts.github}</p>
+                        <p>LinkedIn: {contacts.linkedin}</p>
+                    </div>
+                )
+            case 'education':
+                return (
+                    <div>
+                        <h2 className="text-xl font-bold mb-2">Education</h2>
+                        <ul className="list-decimal list-inside">
+                            {education.map((edu) => (
+                                <li key={edu.id}>
+                                    <span className="font-bold">{edu.degree}</span> at {edu.institution}, {edu.year}
+                                </li>
+                            ))}
+                        </ul>
+                        <p className="mt-2">Type "education 1" or just "1" for more details.</p>
                     </div>
                 )
             default:
@@ -249,7 +303,7 @@ Type "help" for available commands.
                                 />
                             </div>
                             <div className="flex-1 flex justify-center space-x-4">
-                                {['home', 'about', 'projects', 'contact'].map((tab) => (
+                                {['home', 'about', 'projects', 'experience', 'contact', 'education'].map((tab) => (
                                     <button
                                         key={tab}
                                         onClick={() => handleTabClick(tab)}
