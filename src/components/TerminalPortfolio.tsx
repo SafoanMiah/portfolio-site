@@ -293,16 +293,18 @@ Type "help" for available commands.
                                     className="w-3 h-3 rounded-full bg-green-500 hover:bg-green-600 transition-colors"
                                 />
                             </div>
-                            <div className="flex-1 flex justify-center space-x-4">
-                                {['home', 'about', 'projects', 'employments', 'contact'].map((tab) => (
-                                    <button
-                                        key={tab}
-                                        onClick={() => handleTabClick(tab)}
-                                        className={`text-sm ${activeTab === tab ? 'text-accent-green' : 'text-gray-400'} hover:text-accent-green transition-colors`}
-                                    >
-                                        {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                                    </button>
-                                ))}
+                            <div className="flex-1 flex justify-center items-center space-x-4 mr-10">
+                                <div className="flex justify-center items-center space-x-4">
+                                    {['home', 'about', 'projects', 'employments', 'contact'].map((tab) => (
+                                        <button
+                                            key={tab}
+                                            onClick={() => handleTabClick(tab)}
+                                            className={`text-sm ${activeTab === tab ? 'text-accent-green' : 'text-gray-400'} hover:text-accent-green transition-colors`}
+                                        >
+                                            {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                                        </button>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                         <div className="flex-1 p-4 overflow-auto font-mono">
