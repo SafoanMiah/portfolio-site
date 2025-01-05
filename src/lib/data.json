@@ -86,7 +86,7 @@
                 "Collaborated with co-workers to create plans and applications to track and monitor student progress and engagement.",
                 "Discovered that average grades increased by 60% within 2 semesters."
             ],
-            "icon": "images/logo_software_academy.webp"
+            "icon": "/images/logo_software_academy.webp"
         },
         {
             "role": "AI Evaluator",
@@ -98,7 +98,7 @@
                 "Developed a structured evaluation framework, providing feedback, and correcting the mathematical model.",
                 "Improved model reliability and reasoning for deployment."
             ],
-            "icon": "/public/images/logo_outlier.webp"
+            "icon": "/images/logo_outlier.webp"
         },
         {
             "role": "Intern",
@@ -110,7 +110,7 @@
                 "Improved market evaluation by 30% over using no model.",
                 "Led quantitative analysis of 10+ case studies, revealing critical trends that shaped marketing and financial strategies."
             ],
-            "icon": "/public/images/logo_hsbc.webp"
+            "icon": "/images/logo_hsbc.webp"
         }
     ],
     "projects": [
@@ -124,7 +124,7 @@
                 "Gym",
                 "CARLA"
             ],
-            "image": "/public/images/project_carla.webp",
+            "image": "/images/project_carla.webp",
             "github": "https://github.com/SafoanMiah/RL-emergency-autonomous-driving"
         },
         {
@@ -138,7 +138,7 @@
                 "Pandas",
                 "Streamlit"
             ],
-            "image": "/public/images/project_uber.webp",
+            "image": "/images/project_uber.webp",
             "github": "https://github.com/SafoanMiah/RL-emergency-autonomous-driving/blob/main/README.md"
         },
         {
@@ -151,7 +151,7 @@
                 "Next.js",
                 "Web Development"
             ],
-            "image": "/public/images/project_portfolio.webp",
+            "image": "/images/project_portfolio.webp",
             "github": "https://github.com/SafoanMiah/portfolio-site"
         }
     ],
@@ -181,7 +181,7 @@
         {
             "label": "Resume",
             "icon": "download",
-            "link": "/public/safoan_miah_cv.pdf"
+            "link": "/safoan_miah_cv.pdf"
         }
     ],
     "profession": "Data Science Student",
