@@ -116,7 +116,7 @@
     "projects": [
         {
             "name": "Emergency Vehicle Autonomous Driving (RL)",
-            "description": "Train an autonomous emergency vehicle model (ambulance, police, firefighter) within CARLA simulator, using Reinforcement Learning. The model makes use of LiDAR, RGB, GNSS, etc, and PPO for training, model was 4x faster in point A-B navigation compared to standard built-in autopilot.",
+            "description": "Training an autonomous emergency vehicle model within CARLA simulator, using Reinforcement Learning. The model makes use of LiDAR, RGB, GNSS, etc, and PPO for training, model was 4x faster in point A-B navigation compared to standard built-in autopilot.",
             "title": "Emergency Vehicle Autonomous Driving (RL)",
             "tags": [
                 "Python",
@@ -129,7 +129,7 @@
         },
         {
             "name": "Uber Price Prediction And Regression Model Analysis",
-            "description": "This project provides a comprehensive and extensive approach to predicting Uber prices using a variety of regression models. Through the use of data cleaning, exploratory data analysis, model training, hyperparameter tuning, and model evaluation. Gradient Boosting Regression was found to be the best model was the best for this dataset.",
+            "description": "Comprehensive approach to predicting Uber prices using regression models. Including exploratory data analysis, model training, hyperparameter tuning, and model evaluation. Gradient Boosting Regression was found to be the best model was the best for this problem.",
             "title": "Uber Price Prediction And Regression Model Analysis",
             "tags": [
                 "Python",
@@ -153,6 +153,31 @@
             ],
             "image": "/images/project_portfolio.webp",
             "github": "https://github.com/SafoanMiah/portfolio-site"
+        },
+        {
+            "name": "Web Tracker App",
+            "description": "A simple and interactive web application to track progress using Streamlit, allowing users to add names, metrics, and visualize the progress with a leaderboard and charts.",
+            "title": "Web Tracker App",
+            "tags": [
+                "Python",
+                "Streamlit",
+                "Pandas",
+                "Plotly"
+            ],
+            "image": "/images/project_tracker.webp",
+            "github": "https://github.com/SafoanMiah/web-tracker-app"
+        },
+        {
+            "name": "Quick Draw Neural Net",
+            "description": "[Unfinished] Neural Network based on the quick draw data to detect drawings.",
+            "title": "Quick Draw Neural Netword",
+            "tags": [
+                "Python",
+                "Neural Network",
+                "Machine Learning"
+            ],
+            "image": "/images/project_draw.webp",
+            "github": "https://github.com/SafoanMiah/draw"
         }
     ],
     "contacts": {

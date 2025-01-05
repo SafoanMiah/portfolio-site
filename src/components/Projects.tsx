@@ -22,16 +22,20 @@ export const Projects = () => {
             {projects.map((project, index) => (
               <CarouselItem key={index} className="hover:scale-[0.98] transition-transform duration-300">
                 <Card className="overflow-hidden backdrop-blur-sm bg-card/50 border border-white/10 hover:border-primary/50 transition-all duration-300">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-48 object-cover transform hover:scale-105 transition-transform duration-500 animate-rotate"
-                  />
+                  <a href={project.github} target="_blank" rel="noopener noreferrer">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-48 object-cover transform hover:scale-105 transition-transform duration-500 animate-rotate"
+                    />
+                  </a>
                   <div className="p-6">
                     <a href={project.github} target="_blank" rel="noopener noreferrer">
                       <h3 className="text-xl font-semibold mb-2 text-white">{project.title}</h3>
                     </a>
-                    <p className="text-gray-400 mb-4">{project.description}</p>
+                    <a href={project.github} target="_blank" rel="noopener noreferrer">
+                      <p className="text-gray-400 mb-4">{project.description}</p>
+                    </a>
                     <div className="flex flex-wrap gap-2">
                       {project.tags.map((tag) => (
                         <Badge key={tag} variant="outline" className="bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">
@@ -50,13 +54,15 @@ export const Projects = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 max-w-4xl mx-auto">
           {projects.map((project, index) => (
-            <Card
-              key={index}
-              className="p-4 backdrop-blur-sm bg-card/50 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-[0.98] group"
-            >
-              <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-primary transition-colors">{project.title}</h4>
-              <p className="text-sm text-gray-400">{project.description}</p>
-            </Card>
+            <a href={project.github} target="_blank" rel="noopener noreferrer">
+              <Card
+                key={index}
+                className="p-4 backdrop-blur-sm bg-card/50 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-[0.98] group flex flex-col h-full"
+              >
+                <h4 className="text-lg font-semibold text-white mb-2 group-hover:text-primary transition-colors">{project.title}</h4>
+                <p className="text-sm text-gray-400 flex-grow">{project.description}</p>
+              </Card>
+            </a>
           ))}
         </div>
       </div>
