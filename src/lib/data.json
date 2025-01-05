@@ -86,7 +86,7 @@
                 "Collaborated with co-workers to create plans and applications to track and monitor student progress and engagement.",
                 "Discovered that average grades increased by 60% within 2 semesters."
             ],
-            "icon": "/public/images/logo_software_academy.webp"
+            "icon": "images/logo_software_academy.webp"
         },
         {
             "role": "AI Evaluator",
