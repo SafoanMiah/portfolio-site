@@ -44,8 +44,8 @@ export const Projects = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hover:scale-110 transition-transform" />
-          <CarouselNext className="hover:scale-110 transition-transform" />
+          <CarouselPrevious className="w-10 h-10" />
+          <CarouselNext className="w-10 h-10" />
         </Carousel>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 max-w-4xl mx-auto">

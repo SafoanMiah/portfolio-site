@@ -17,10 +17,12 @@ export const Contact = () => {
           </div>
 
           <div className="flex justify-center mt-8 gap-4">
-            <Button variant="outline" size="lg" className="w-full gap-2 hover:scale-105 transition-transform">
-              <Mail className="w-5 h-5" />
-              Contact Me
-            </Button>
+            <a href={`mailto:${email}`}>
+              <Button variant="outline" size="lg" className="w-full gap-2 hover:scale-105 transition-transform">
+                <Mail className="w-5 h-5" />
+                Contact Me
+              </Button>
+            </a>
             <a href={github} target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="icon" className="hover:scale-110 transition-transform">
                 <Github className="w-5 h-5" />

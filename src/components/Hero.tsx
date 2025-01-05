@@ -44,13 +44,15 @@ export const Hero = () => {
           <div className="flex flex-col items-start gap-4 mt-8">
             <div className="flex gap-4">
               {buttons.filter(button => button.icon !== 'mail').map((button, index) => (
-                <Button key={index} variant="outline" size="lg" className="gap-2 relative group overflow-hidden">
-                  <div className="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-                  {button.icon === 'github' && <Github className="w-5 h-5" />}
-                  {button.icon === 'linkedin' && <Linkedin className="w-5 h-5" />}
-                  {button.icon === 'download' && <Download className="w-5 h-5" />}
-                  <a href={button.link} target="_blank" rel="noopener noreferrer">{button.label}</a>
-                </Button>
+                <a href={button.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                  <Button key={index} variant="outline" size="lg" className="gap-2 relative group overflow-hidden">
+                    <div className="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                    {button.icon === 'github' && <Github className="w-5 h-5" />}
+                    {button.icon === 'linkedin' && <Linkedin className="w-5 h-5" />}
+                    {button.icon === 'download' && <Download className="w-5 h-5" />}
+                    {button.label}
+                  </Button>
+                </a>
               ))}
             </div>
             <Button
