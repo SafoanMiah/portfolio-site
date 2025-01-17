@@ -115,18 +115,6 @@
     ],
     "projects": [
         {
-            "name": "Quick Draw Neural Net",
-            "description": "[In Progress] Developing a Deep Learning Convolutional Neural Network using the Quick Draw dataset to classify hand-drawn sketches. The project includes a Web API, for real-time predictions and interactive usage.",
-            "title": "Quick Draw Neural Network",
-            "tags": [
-                "Python",
-                "Neural Network",
-                "Machine Learning"
-            ],
-            "image": "/images/project_draw.webp",
-            "github": "https://github.com/SafoanMiah/quick-draw-neural-net/blob/main/main.ipynb"
-        },
-        {
             "name": "Emergency Vehicle Autonomous Driving (RL)",
             "description": "Training an autonomous emergency vehicle model within CARLA simulator, using Reinforcement Learning. The model makes use of LiDAR, RGB, GNSS, etc, and PPO for training, model was 4x faster in point A-B navigation compared to standard built-in autopilot.",
             "title": "Emergency Vehicle Autonomous Driving (RL)",
@@ -138,6 +126,18 @@
             ],
             "image": "/images/project_carla.webp",
             "github": "https://github.com/SafoanMiah/RL-emergency-autonomous-driving"
+        },
+        {
+            "name": "Quick Draw Neural Net",
+            "description": "[In Progress] Developing a Deep Learning Convolutional Neural Network using the Quick Draw dataset to classify hand-drawn sketches. The project includes a Web API, for real-time predictions and interactive usage.",
+            "title": "Quick Draw Neural Network",
+            "tags": [
+                "Python",
+                "Neural Network",
+                "Machine Learning"
+            ],
+            "image": "/images/project_draw.webp",
+            "github": "https://github.com/SafoanMiah/quick-draw-neural-net/blob/main/notebook.ipynb"
         },
         {
             "name": "Uber Price Prediction And Regression Model Analysis",
