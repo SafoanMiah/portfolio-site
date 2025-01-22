@@ -47,3 +47,5 @@ To get a local copy up and running, follow these steps:
 ## License
 
 This project is licensed under the Apache 2.0 License.
+
+_Note: I'm not primarily a web developer, as a result I did leverage use of tools such as v0 and shadcn._

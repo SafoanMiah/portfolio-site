@@ -128,6 +128,18 @@
             "github": "https://github.com/SafoanMiah/RL-emergency-autonomous-driving"
         },
         {
+            "name": "Quick Draw Neural Net",
+            "description": "[In Progress] Developing a Deep Learning Convolutional Neural Network using the Quick Draw dataset to classify hand-drawn sketches. The project includes a Web API, for real-time predictions and interactive usage.",
+            "title": "Quick Draw Neural Network",
+            "tags": [
+                "Python",
+                "Neural Network",
+                "Machine Learning"
+            ],
+            "image": "/images/project_draw.webp",
+            "github": "https://github.com/SafoanMiah/quick-draw-neural-net/blob/main/notebook.ipynb"
+        },
+        {
             "name": "Uber Price Prediction And Regression Model Analysis",
             "description": "Comprehensive approach to predicting Uber prices using regression models. Including exploratory data analysis, model training, hyperparameter tuning, and model evaluation. Gradient Boosting Regression was found to be the best model was the best for this problem.",
             "title": "Uber Price Prediction And Regression Model Analysis",
@@ -139,7 +151,7 @@
                 "Streamlit"
             ],
             "image": "/images/project_uber.webp",
-            "github": "https://github.com/SafoanMiah/RL-emergency-autonomous-driving"
+            "github": "https://github.com/SafoanMiah/uber_regression_models"
         },
         {
             "name": "Portfolio Website",
@@ -166,18 +178,6 @@
             ],
             "image": "/images/project_tracker.webp",
             "github": "https://github.com/SafoanMiah/web-tracker-app"
-        },
-        {
-            "name": "Quick Draw Neural Net",
-            "description": "[In Progress] Developing a Deep Learning Convolutional Neural Network using the Quick Draw dataset to classify hand-drawn sketches. The project includes a Web API, for real-time predictions and interactive usage.",
-            "title": "Quick Draw Neural Network",
-            "tags": [
-                "Python",
-                "Neural Network",
-                "Machine Learning"
-            ],
-            "image": "/images/project_draw.webp",
-            "github": "https://github.com/SafoanMiah/quick-draw-neural-net/blob/main/main.ipynb"
         }
     ],
     "contacts": {
