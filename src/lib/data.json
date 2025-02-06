@@ -184,7 +184,7 @@
         "email": "safmiah.sm@gmail.com",
         "phone": "+44 7404034660",
         "github": "https://github.com/SafoanMiah",
-        "linkedin": "https://linkedin.com/in/safoanmiah"
+        "linkedin": "https://linkedin.com/in/safoan"
     },
     "aboutMe": "I’m Safoan, a Data Science student with a strong focus on Machine Learning and Neural Networks. My experience lies primarily in Python and SQL, and I actively broaden my knowledge by taking additional modules in computer science and finance. Beyond university, I pursue external courses to deepen my understanding and broaden my programming skills. My goal is to continuously learn and develop practical solutions to real world problems.",
     "buttons": [
@@ -196,7 +196,7 @@
         {
             "label": "LinkedIn",
             "icon": "linkedin",
-            "link": "https://linkedin.com/in/safoanmiah"
+            "link": "https://linkedin.com/in/safoan"
         },
         {
             "label": "Contact",
