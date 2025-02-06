@@ -14,7 +14,7 @@
     ],
     "education": [
         {
-            "degree": "BSc in Data Science",
+            "degree": "BSc (Hons) Data Science – 4.0 GPA",
             "university": "Northeastern University (London)",
             "years": [
                 {
@@ -138,6 +138,19 @@
             ],
             "image": "/images/project_draw.webp",
             "github": "https://github.com/SafoanMiah/quick-draw-neural-net/blob/main/notebook.ipynb"
+        },
+        {
+            "name": "MC Tournament Manager",
+            "description": "A tournament hub to manage some in game Minecraft tournaments, it converses with a database, Soupbase, to get information. Will also be connected to a discord bot to facilitate the creation of events, and a Minecraft plugin made in java to have influence in game.",
+            "title": "MC Tournament Manager",
+            "tags": [
+                "PostgreSQL",
+                "Vite",
+                "Next-js",
+                "Java"
+            ],
+            "image": "/images/mc_tournament.webp",
+            "github": "https://github.com/SafoanMiah/mc-tournaments"  
         },
         {
             "name": "Uber Price Prediction And Regression Model Analysis",
