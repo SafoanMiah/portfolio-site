@@ -9,6 +9,7 @@ const contacts = data.contacts;
 const name = data.name;
 const buttons = data.buttons;
 const profession = data.profession;
+const location = data.location;
 
 export const Hero = () => {
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
@@ -43,12 +44,17 @@ export const Hero = () => {
             <span className="text-primary animate-pulse">_</span>
           </h1>
 
-          <h2 className="text-xl md:text-2xl text-primary relative inline-block">
-            {profession}
-            <div
-              className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary/50 animate-pulse"
-            />
-          </h2>
+          <div>
+            <h2 className="text-xl md:text-2xl text-primary relative inline-block">
+              {profession}
+              <div
+                className="absolute -bottom-1 left-0 w-full h-0.5 bg-primary/50 animate-pulse"
+              />
+            </h2>
+            <h3 className="text-sm md:text-base text-gray-400 mt-2">
+              {location}
+            </h3>
+          </div>
 
           <p className="text-[rgb(155,164,184)] text-sm md:text-base">
             {aboutMe}

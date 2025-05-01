@@ -30,7 +30,7 @@ export const Experience = () => {
                 <Card
                   className={`ml-0 md:ml-16 p-6 backdrop-blur-sm bg-card/50 border border-white/10 
                     hover:border-primary/50 transition-all duration-300 cursor-pointer
-                    transform hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/20
+                    hover:shadow-lg hover:shadow-primary/20
                     ${expandedIndex === index ? 'border-primary/50 shadow-lg shadow-primary/20' : ''}`}
                   onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
                 >

@@ -129,12 +129,12 @@
         },
         {
             "name": "Quick Draw Neural Net",
-            "description": "[In Progress] Developing a Deep Learning Convolutional Neural Network using the Quick Draw dataset to classify hand-drawn sketches. The project includes a Web API, for real-time predictions and interactive usage.",
+            "description": "Developing a Deep Learning Convolutional Neural Network using the Quick Draw dataset to classify hand-drawn sketches. The project will include a Web API, for real-time predictions and interactive usage.",
             "title": "Quick Draw Neural Network",
             "tags": [
                 "Python",
-                "Neural Network",
-                "Machine Learning"
+                "PyTorch",
+                "Neural Network"
             ],
             "image": "/images/project_draw.webp",
             "github": "https://github.com/SafoanMiah/quick-draw-neural-net/blob/main/notebook.ipynb"
@@ -150,7 +150,7 @@
                 "Java"
             ],
             "image": "/images/mc_tournament.webp",
-            "github": "https://github.com/SafoanMiah/mc-tournaments"  
+            "github": "https://github.com/SafoanMiah/mc-tournaments"
         },
         {
             "name": "Uber Price Prediction And Regression Model Analysis",
@@ -199,7 +199,7 @@
         "github": "https://github.com/SafoanMiah",
         "linkedin": "https://linkedin.com/in/safoan"
     },
-    "aboutMe": "I’m Safoan, a Data Science student with a strong focus on Machine Learning and Neural Networks. My experience lies primarily in Python and SQL, and I actively broaden my knowledge by taking additional modules in computer science and finance. Beyond university, I pursue external courses to deepen my understanding and broaden my programming skills. My goal is to continuously learn and develop practical solutions to real world problems.",
+    "aboutMe": "I'm Saf, a Data Science student with focus on Machine Learning and Neural Networks. Experiences lie primarily in Python and SQL. I actively broaden my knowledge by taking additional modules in computer science and finance. Beyond university, I pursue courses to better my understanding and broaden my programming skills.",
     "buttons": [
         {
             "label": "GitHub",
@@ -223,6 +223,7 @@
         }
     ],
     "profession": "Data Science Student",
+    "location": "United Kingdom, London",
     "programmingSkills": [
         "Python",
         "PostgreSQL",
@@ -231,12 +232,12 @@
     ],
     "dataSkills": [
         "PyTorch",
+        "Scikit-Learn",
         "Pandas",
-        "Gym",
-        "Tableau",
-        "Streamlit",
         "NumPy",
-        "Visualizations",
-        "Scikit-Learn"
+        "Gymnasium ",
+        "Matplotlib",
+        "Plotly",
+        "Streamlit"
     ]
 }
