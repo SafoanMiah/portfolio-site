@@ -23,7 +23,7 @@ export const Experience = () => {
               <div key={index} className="relative group">
                 {/* Timeline dot */}
                 <div className="absolute left-8 -translate-x-1/2 w-4 h-4 hidden md:flex items-center justify-center">
-                  <Circle className="w-4 h-4 text-primary animate-pulse" fill="currentColor" />
+                  <Circle className="w-4 h-4 text-primary" fill="currentColor" />
                 </div>
 
                 {/* Card to display experience details */}

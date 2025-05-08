@@ -77,9 +77,19 @@
     ],
     "experience": [
         {
+            "role": "Data Science Engineer (Intern)",
+            "company": "Draft Kings",
+            "period": "May 2025 — Present",
+            "description": "",
+            "details": [
+                "Will be added soon."
+            ],
+            "icon": "/images/logo_draft_kings.webp"
+        },
+        {
             "role": "Programming Tutor",
             "company": "Software Academy",
-            "period": "Apr 2024 — Present",
+            "period": "Apr 2024 — May 2025",
             "description": "",
             "details": [
                 "Mentored Python and Data projects, simplifying technical concepts for non-technical learners.",
