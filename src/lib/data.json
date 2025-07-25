@@ -82,7 +82,9 @@
             "period": "May 2025 — Present",
             "description": "",
             "details": [
-                "Will be added soon."
+                "Investigated syndicate behaviour in bettor networks with large-scale graph structures.",
+                "Developed a Graph Convolutional Network, to identify coordinated betting groups.",
+                "Worked with an Agile team, contributing to engineering discussions and sprint planning."
             ],
             "icon": "/images/logo_draft_kings.webp"
         },
